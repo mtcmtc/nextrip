@@ -34,7 +34,7 @@ npm install
 npm run dev
 ```
 
-Navigate to [localhost:5000](localhost:5000). You should see your app running. You can edit components in `pages`, save, and see your changes.
+Navigate to [localhost:5000](localhost:5000). You should see your app running. You can make edits in `components` or `pages`, save, and see your changes.
 
 ## Running Tests
 
