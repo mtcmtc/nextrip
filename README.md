@@ -1,4 +1,5 @@
-# Metro Transip NexTrip Case Study
+# Metro Transit NexTrip Case Study
+
 
 ## Summary
 A web application that displays Minneapolis Metro Transit bus line information based on APIs available via Metro Transit NextTrip API. This particular project was built using Next.js React framework with Tailwind CSS.
