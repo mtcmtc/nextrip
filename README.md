@@ -1,23 +1,72 @@
-# Next.js + Tailwind CSS Example
+# Metro Transip NexTrip Case Study
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) (v2.1) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+## Summary
+A web application that displays Minneapolis Metro Transit bus line information based on APIs available via Metro Transit NextTrip API. This particular project was built using Next.js React framework with Tailwind CSS.
 
-It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
+### Case Study Requirements
+The application must provide the following functionality:
+* Select a bus route from a list of available routes
+* Select a direction for a bus route
+* For a given route and direction, display the stops
+* Respond reasonably to browser back and forward buttons (for example, implement application
+routing)
 
-## Deploy your own
+## Getting Started
+To get a local copy up and running follow these simple example steps:
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
+Clone this repo
 ```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
+git clone https://github.com/mtcmtc/nextrip.git
+cd nextrip
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Install the dependencies:
+
+### yarn
+```bash
+yarn install
+yarn dev
+```
+### npm
+```bash
+npm install
+npm run dev
+```
+
+Navigate to [localhost:5000](localhost:5000). You should see your app running. You can edit components in `pages`, save, and see your changes.
+
+## Running Tests
+
+You will need to install jest to run tests.
+
+```bash
+jest
+```
+
+## Building and running in production mode
+
+To create an optimised version of the app:
+
+### yarn
+```bash
+yarn build
+```
+
+### npm
+```bash
+npm run build
+```
+
+You can run the newly built app with `yarn start` or `npm run start`.
+
+## Assumptions Made
+1. The user is accessing the app on-the-go on a mobile device.
+	* Mobile experience should be prioritized
+	* Minimal data usage and fetch requests
+2. The user will likely make accidental selections.
+	* Use browser routing to retrace steps and keep user on the same page.
+3. User may have ADA accessibility needs
+	* Account for screen readers
+	* Account for contrast
+	* Dark mode for light sensitivity
+
