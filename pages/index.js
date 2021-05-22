@@ -104,8 +104,8 @@ export default function Home({ availableRoutes }) {
       error: false 
     }
   )
-
   const {selectedRoute, selectedDirection, selectedStop, fetchedRoutes, departures, loading, error} = state
+  const selectHistory = useRef([]);
 
   useEffect(()=>{
     if(selectedRoute && !fetchedRoutes[selectedRoute]){
@@ -145,7 +145,6 @@ export default function Home({ availableRoutes }) {
 
   useEffect(()=>{
     if(selectedStop){
-      
       try{
         dispatch({ type : 'loading'})
         fetchData(selectedRoute, selectedDirection, selectedStop)
@@ -162,23 +161,11 @@ export default function Home({ availableRoutes }) {
     }
   },[selectedStop])
 
-  function handleRoute(event){
+  function handleChange(event, step){
+    let format = step.toLowerCase();
+    selectHistory.current.push({ [format] : event.target.value})
     dispatch({
-      type: 'routeSelected',
-      value: event.target.value,
-    })
-  }
-
-  function handleDirection(event){
-    dispatch({
-      type: 'directionSelected',
-      value: event.target.value,
-    })
-  }
-
-  function handleStop(event){
-    dispatch({
-      type: 'stopSelected',
+      type: `${format}Selected`,
       value: event.target.value,
     })
   }
@@ -205,7 +192,7 @@ export default function Home({ availableRoutes }) {
 
           <Select 
             step={'Route'}
-            changeHandler={handleRoute}
+            handleChange={ e => handleChange(e, 'Route')}
             selectedState={selectedRoute}
             data={availableRoutes}
           />
@@ -213,7 +200,7 @@ export default function Home({ availableRoutes }) {
           {fetchedRoutes[selectedRoute] &&
             <Select 
               step={'Direction'}
-              changeHandler={handleDirection}
+              handleChange={ e => handleChange(e, 'Direction')}
               selectedState={selectedDirection}
               data={fetchedRoutes[selectedRoute]}
             />
@@ -222,7 +209,7 @@ export default function Home({ availableRoutes }) {
           {selectedDirection && fetchedRoutes[selectedRoute][selectedDirection].stops &&
             <Select
               step={'Stop'}
-              changeHandler={handleStop}
+              handleChange={ e => handleChange(e, 'Stop')}
               selectedState={selectedStop}
               data={fetchedRoutes[selectedRoute][selectedDirection].stops}
             />

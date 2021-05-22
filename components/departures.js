@@ -1,7 +1,7 @@
 
 export default function Departures({stop, direction, departures, loading}){
   return(
-    <div id="ntDepartures" className="w-full">
+    <div id="ntDepartures" className="w-full max-w-600px">
       <div className="uppercase text-xl bg-yellow-100 p-3 rounded-md tracking-wide">
         <sub>{direction.Text}</sub>
         <h3 className="font-black capitalize">{stop.label}</h3>
