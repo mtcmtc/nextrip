@@ -10,10 +10,9 @@ export async function fetchData(routeId, directionId, placeCode){
 	if(placeCode) path = `/nextrip/${routeId}/${directionId}/${placeCode}`
 	
 	url.pathname = path;
-	
+
 	const res = await fetch(url.href)
 	const data = await res.json()
-  
   if(!data){
   	throw new Error(data.message)
   }

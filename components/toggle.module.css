@@ -1,0 +1,47 @@
+.hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.toggle-wrapper {
+  width: 60px;
+  display: block;
+}
+
+.toggle {
+  height: 30px;
+  width: 60px;
+  background: #000;
+  border-radius: 30px;
+  padding: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.toggle::before {
+  content: "";
+  display: block;
+  height: 25px;
+  width: 25px;
+  border-radius: 30px;
+  background: #fff;
+  position: absolute;
+  z-index: 2;
+  transform: translate(0);
+  transition: transform .3s;
+}
+
+.toggle.dark::before {
+  transform: translateX(25px);
+}
+
+.toggle input {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+}
