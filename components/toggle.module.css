@@ -8,9 +8,10 @@
   width: 1px;
 }
 
-.toggle-wrapper {
+.toggleWrapper {
   width: 60px;
   display: block;
+  margin-left: 1.25rem;
 }
 
 .toggle {

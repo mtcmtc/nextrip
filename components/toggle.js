@@ -4,8 +4,8 @@ import styles from './toggle.module.css'
 export default function Toggle({theme, toggleTheme}){
 	return(
 		<>
-		<label className={styles.toggleWrapper} htmlFor="toggle">
-		  <div className={`flex items-center mr-2 dark:bg-gray-600 ${styles.toggle} ${theme === 'dark' ? styles.dark : styles.light}`}>
+		<label className={`ml-5 ${styles.toggleWrapper}`} htmlFor="toggle">
+		  <div className={`flex items-center dark:bg-gray-600 ${styles.toggle} ${theme === 'dark' ? styles.dark : styles.light}`}>
 		    <span className={styles.hidden}>
 		      {theme ? "Enable" : "Disable"}
 		    </span>

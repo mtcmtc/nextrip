@@ -26,11 +26,11 @@ export default function NexTrip({ availableRoutes }){
   return (
     <Router>
       <ThemeContextProvider>
-        <Layout heading={heading}>
-          <ReducerContextProvider>
+        <ReducerContextProvider>
+          <Layout heading={heading}>
             <SelectGroup availableRoutes={availableRoutes}/>
-          </ReducerContextProvider>
-        </Layout>
+          </Layout>
+        </ReducerContextProvider>
       </ThemeContextProvider>
     </Router>
   )
