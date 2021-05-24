@@ -32,7 +32,7 @@ export default function Departures({stopName, direction, departures, loading}){
                   <td className="py-5 font-bold">{departure.Route}</td>
                   <td className="py-5">{departure.Description}</td>
                   <td className="py-5 font-bold">
-                    <span className={`${departure.Actual ? 'animate-pulse text-red-800' : ''}`}>
+                    <span className={`${departure.Actual ? 'animate-pulse text-red-800 dark:text-yellow-200' : ''}`}>
                       {departure.DepartureText}
                     </span>
                   </td>
