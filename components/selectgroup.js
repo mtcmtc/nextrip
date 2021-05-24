@@ -85,9 +85,9 @@ export default function SelectGroup({ availableRoutes }) {
   return (
     <>
     {selectedRouteId &&
-      <div><button 
+      <div className="mb-5"><button 
         onClick={() =>{ dispatch({ type: 'reset' }) }}
-        className="font-bold dark:bg-gray-600 p-3 border-2 border-gray-300 dark:border-white rounded-lg uppercase pb-5"
+        className="font-bold dark:bg-gray-600 p-3 border-2 border-gray-300 dark:border-white rounded-lg uppercase"
         >Start Over</button></div>
     }
     <div className="container max-w-500px px-5">
