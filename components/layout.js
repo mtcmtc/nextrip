@@ -4,7 +4,7 @@ import { ThemeContext } from '../contexts/theme'
 import { ReducerContext } from '../contexts/ReducerContext'
 import Toggle from '../components/toggle'
 
-export default function Layout({heading, children}){
+export default function Layout({children}){
   const { theme, toggleTheme } = useContext(ThemeContext)
   const { state, dispatch } = useContext(ReducerContext);
   return(
@@ -25,7 +25,7 @@ export default function Layout({heading, children}){
         </nav>
         <main className="flex flex-col items-center justify-start w-full flex-1 text-center dark:bg-gray-900 dark:text-gray-100">
           <h1 className="text-6xl font-bold mb-5 px-5 pt-10 pb-5">
-              {heading}
+              Metro Transit{' '}<span className="text-blue-600 dark:text-indigo-300">NexTrip</span>
           </h1>
           {children}
         </main>

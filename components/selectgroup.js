@@ -40,7 +40,6 @@ export default function SelectGroup({ availableRoutes }) {
     let fetchStep
     if(selectedRouteId && !fetchedRoutes.current[selectedRouteId]) fetchStep = 'direction'
     if(selectedDirectionId && !fetchedRoutes.current[selectedRouteId][selectedDirectionId].stops) fetchStep = 'stop'
-    if(selectedStopId) fetchStep = 'departures'
 
     let path = `/${selectedRouteId}`
     if(selectedDirectionId){
@@ -55,7 +54,7 @@ export default function SelectGroup({ availableRoutes }) {
     if(fetchStep){
       try{
         dispatch({ type : 'loading'})
-        fetchData(selectedRouteId, selectedDirectionId, selectedStopId)
+        fetchData(selectedRouteId, selectedDirectionId)
         .then( data => { 
           if(fetchStep === 'direction') { 
             fetchedRoutes.current[selectedRouteId] = data
@@ -63,9 +62,7 @@ export default function SelectGroup({ availableRoutes }) {
           if(fetchStep === 'stop') {
             fetchedRoutes.current[selectedRouteId][selectedDirectionId].stops = data
           }
-          if(fetchStep === 'departures') { 
-            dispatch({ type : 'departuresFetched', data }) 
-          } else dispatch({ type : 'success' })
+          dispatch({ type : 'success' })
         })
       } catch(e){
         console.warn('Error fetching departures for specified stop: ', error)
@@ -73,14 +70,6 @@ export default function SelectGroup({ availableRoutes }) {
       }
     }
   },[selectedRouteId, selectedDirectionId, selectedStopId])
-
-  function handleChange(event, step){
-    dispatch({
-      type: `${step}Selected`,
-      value: event.target.value,
-      label: event.target.selectedOptions[0].label,
-    })
-  }
 
   return (
     <>
@@ -95,8 +84,8 @@ export default function SelectGroup({ availableRoutes }) {
         <Select 
           step={'route'}
           loading={loading}
+          dispatch={dispatch}
           selectedState={selectedRouteId}
-          handleChange={ e => handleChange(e, 'route')}
           data={availableRoutes}
         />
       </Route>
@@ -106,8 +95,8 @@ export default function SelectGroup({ availableRoutes }) {
           <Select 
             step={'direction'}
             loading={loading}
+            dispatch={dispatch}
             selectedState={selectedDirectionId}
-            handleChange={ e => handleChange(e, 'direction')}
             data={fetchedRoutes.current[selectedRouteId]}
           />
         }
@@ -118,8 +107,8 @@ export default function SelectGroup({ availableRoutes }) {
           <Select
             step={'stop'}
             loading={loading}
+            dispatch={dispatch}
             selectedState={selectedStopId}
-            handleChange={ e => handleChange(e, 'stop')}
             data={fetchedRoutes.current[selectedRouteId][selectedDirectionId].stops}
           />
         }
@@ -128,14 +117,12 @@ export default function SelectGroup({ availableRoutes }) {
     <Route path="/:routeId/:directionId/:placeCode">
     {selectedStopId &&
       <Departures 
-        stopName={selectedStopName}
-        direction={fetchedRoutes.current[selectedRouteId][selectedDirectionId]}
-        departures={departures}
+        fetchedRoutes={fetchedRoutes.current}
         loading={loading}
       />
     }
     </Route>
-    {loading && <Loading />}
+    {loading && <Loading loading={loading} />}
     {error && <p className='center-text error'>{error}</p>}
     </>
   )

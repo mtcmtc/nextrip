@@ -7,7 +7,6 @@ function routeReducer(state, action) {
       selectedRouteId: action.value,
       selectedDirectionId: '',
       selectedStopId: '',
-      departures: [],
     }
   } else if (action.type === 'success') {
     return {
@@ -19,19 +18,12 @@ function routeReducer(state, action) {
       ...state,
       selectedDirectionId: action.value,
       selectedStopId: '',
-      departures: [],
     }
   } else if (action.type === 'stopSelected') {
     return {
       ...state,
       selectedStopId: action.value,
       selectedStopName: action.label
-    }
-  } else if (action.type === 'departuresFetched') {
-    return {
-      ...state,
-      loading: false,
-      departures: action.data,
     }
   } else if (action.type === 'loading'){
     return{
@@ -49,7 +41,6 @@ function routeReducer(state, action) {
       selectedRouteId: '',
       selectedDirectionId: '',
       selectedStopId: '',
-      departures: [],
       loading: false,
       error: false
     }
@@ -68,7 +59,6 @@ export function ReducerContextProvider({ children }){
 		  selectedDirectionId: '',
 		  selectedStopId: '',
 		  selectedStopName: '',
-		  departures: [],
 		  loading: false,
 		  error: false 
 		}

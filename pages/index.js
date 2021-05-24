@@ -20,14 +20,12 @@ export async function getServerSideProps(context){
   return  { props: { availableRoutes }, }
 }
 
-const heading = <>Metro Transit{' '}<span className="text-blue-600 dark:text-indigo-300">NexTrip</span></>;
-
 export default function NexTrip({ availableRoutes }){
   return (
     <Router>
       <ThemeContextProvider>
         <ReducerContextProvider>
-          <Layout heading={heading}>
+          <Layout>
             <SelectGroup availableRoutes={availableRoutes}/>
           </Layout>
         </ReducerContextProvider>
