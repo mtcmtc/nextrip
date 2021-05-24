@@ -39,7 +39,7 @@ Navigate to [localhost:3000](localhost:3000). You should see your app running. Y
 
 ## Building and running in production mode
 
-To create an optimised version of the app:
+To create an optimized version of the app:
 
 ### yarn
 ```bash
