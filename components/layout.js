@@ -15,7 +15,7 @@ export default function Layout({heading, children}){
       </Head>
       <div className='flex flex-col items-center justify-center min-h-screen bg-white dark:bg-gray-900'>
         <nav className="bg-opacity-80 dark:bg-opacity-80 bg-white border-b-2 dark:bg-gray-900 sticky top-0 w-full z-10">
-          <div className="container flex items-center justify-between justify-end mx-auto py-2">
+          <div style={{'margin' : '0 auto'}} className="container flex items-center justify-between justify-end mx-auto py-2">
             <Toggle theme={theme} toggleTheme={toggleTheme}/>
             <div className="mr-5"><button 
               onClick={() =>{ dispatch({ type: 'reset' }) }}
