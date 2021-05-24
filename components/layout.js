@@ -15,11 +15,11 @@ export default function Layout({heading, children}){
       </Head>
       <div className='flex flex-col items-center justify-center min-h-screen bg-white dark:bg-gray-900'>
         <nav className="bg-opacity-80 dark:bg-opacity-80 bg-white border-b-2 dark:bg-gray-900 sticky top-0 w-full z-10">
-          <div className="container flex items-center justify-between justify-end mr-5 py-2">
+          <div className="container flex items-center justify-between justify-end mx-auto py-2">
             <Toggle theme={theme} toggleTheme={toggleTheme}/>
             <div className="mr-5"><button 
               onClick={() =>{ dispatch({ type: 'reset' }) }}
-              className={`opacity-50 transition-opacity ${state.selectedRouteId ? 'opacity-100': 'pointer-events-none'} bg-white border-2 border-gray-300 dark:bg-gray-600 dark:border-white dark:text-white font-bold p-2 rounded-lg uppercase`}
+              className={`opacity-50 transition-opacity ${state.selectedRouteId ? 'opacity-100': 'pointer-events-none'} bg-white border-2 border-gray-300 dark:bg-gray-600 dark:border-white dark:text-white font-bold p-3 rounded-lg uppercase`}
               >Reset</button></div>
           </div>
         </nav>
