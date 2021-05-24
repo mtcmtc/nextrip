@@ -26,12 +26,8 @@ export default function SelectGroup({ availableRoutes }) {
       if (history.action === 'POP') {
         if (locationKeys[1] === location.key) {
           setLocationKeys(([ _, ...keys ]) => keys)
-          // console.log('fwd')
-          // Handle forward event
         } else {
           setLocationKeys((keys) => [ location.key, ...keys ])
-          // Handle back event
-          // console.log('back')
           if(!location.state.selectedRouteId){ ntRoute.selectedIndex = 0}
           else if(!location.state.selectedDirectionId){ ntDirection.selectedIndex = 0}
           else if(!location.state.selectedStopId){ ntStop.selectedIndex = 0}
@@ -88,6 +84,12 @@ export default function SelectGroup({ availableRoutes }) {
 
   return (
     <>
+    {selectedRouteId &&
+      <div><button 
+        onClick={() =>{ dispatch({ type: 'reset' }) }}
+        className="font-bold dark:bg-gray-600 p-3 border-2 border-gray-300 dark:border-white rounded-lg uppercase"
+        >Start Over</button></div>
+    }
     <div className="container max-w-500px px-5">
       {dev &&
         <div><p>current route id: {selectedRouteId}</p>
