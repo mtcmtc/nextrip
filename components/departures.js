@@ -27,7 +27,7 @@ export default function Departures({stopName, direction, departures, loading}){
           </thead>
             <tbody>
               {departures.length > 0 && !loading &&
-                departures.map(departure => 
+                departures.map(departure =>
                 <tr className="bg-gray-100 dark:bg-gray-800 border-b border-gray-300 rounded-lg" key={departure.DepartureTime}>
                   <td className="py-5 font-bold">{departure.Route}</td>
                   <td className="py-5">{departure.Description}</td>

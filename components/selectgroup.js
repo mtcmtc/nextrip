@@ -135,6 +135,7 @@ export default function SelectGroup({ availableRoutes }) {
       />
     }
     </Route>
+    {loading && <Loading />}
     {error && <p className='center-text error'>{error}</p>}
     </>
   )

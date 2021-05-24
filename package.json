@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "capitalize": "^2.0.3",
+    "dateformat": "^4.5.1",
     "next": "latest",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
